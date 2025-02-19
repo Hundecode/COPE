@@ -1,0 +1,9 @@
+id: COPE
+source-base: https://github.com/Hundecode/COPE
+narration-base: https://github.com/Hundecode/COPE
+url-base: https://stexmmt.mathhub.info/:sTeX
+dependencies: sTeX/meta-inf,smglom/computing,smglom/cs,smglom/epistemology,smglom/meta-inf
+responsible: dominic.lohr@FAU.de
+title: Domi's playground
+format:stex
+ignore:*.zhs.tex
