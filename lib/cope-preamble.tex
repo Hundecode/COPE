@@ -1,0 +1,39 @@
+
+% \usepackage{tikzinput}
+% \usetikzlibrary{shapes}
+% \usetikzlibrary{patterns}
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{automata}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multicol}
+
+
+\usepackage{xparse}  % For advanced argument processing
+\usepackage{pgfkeys} % For key-value handling
+
+% Set up pgfkeys for feedback options
+\pgfkeys{
+  /feedback/.is family, /feedback,
+  default/.style = {type = Default, form = r},
+  type/.estore in = \feedbackType,
+  form/.estore in = \feedbackForm
+}
+
+% Define the \feedback command with an optional key-value argument
+\NewDocumentCommand{\feedback}{ O{} m }{%
+  % Process keys with defaults, overridden by user-specified keys
+  \pgfkeys{/feedback, default, #1}%
+  \noindent\textbf{\feedbackType-\feedbackForm: }#2\par\medskip
+}
+
+% Define the sfeedback environment with an optional title.
+\NewDocumentEnvironment{sfeedback}{ o }
+{%
+  \par\noindent\textbf{\IfNoValueTF{#1}{Default Feedback}{#1}}%
+  \par\smallskip  % Content is displayed in italic.
+}
+{%
+  \par
+}
